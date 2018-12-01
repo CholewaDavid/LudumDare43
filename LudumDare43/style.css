@@ -1,0 +1,97 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	background-color: #18110B;
+	overflow: hidden;
+	text-align: center;
+}
+
+.terminal_group{
+	border-style: solid;
+  border-width: 1px;
+	display:inline-block;
+	padding: 5px;
+	margin: 10px;
+}
+
+.terminal_display{
+	background-color: #EEEEEE;
+}
+
+.display_text{
+	background-color: #000000;
+	color: #33EC31;
+	font-family: 'Space Mono', monospace;
+	font-size: 18px;
+	padding: 3px;
+}
+
+.terminal_button, .terminal_button_light{
+	background-color: #EEEEEE;
+}
+
+.terminal_button{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	box-sizing: content-box;
+}
+
+.terminal_button_light{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+.unselectable{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.absolute_bottom{
+	position: absolute;
+	bottom: 0;
+}
+
+#content{
+	width: 70%;
+	height: 90%;
+	margin: auto;
+	text-align: left;
+	background-color: #999999;
+}
+
+#display_monitor{
+	width: 100%;
+	height: 45%;
+	resize: none;
+}
+
+#terminal{
+	position:relative;
+	background-color: #AAAAAA;
+	height: 55%;
+	
+}
+
+
+/*Terminal groups*/
+
+#terminal_light{
+	bottom: 0;
+	right: 0;
+	position:absolute;
+}
+
+#terminal_report{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
