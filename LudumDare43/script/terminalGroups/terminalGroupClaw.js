@@ -52,7 +52,6 @@ TerminalGroupClaw.prototype.setEvents = function(){
 	this.btn_grab.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_claw.btn_grab.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
 		}
@@ -63,7 +62,6 @@ TerminalGroupClaw.prototype.setEvents = function(){
 	this.btn_drop.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_claw.btn_drop.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
 		}

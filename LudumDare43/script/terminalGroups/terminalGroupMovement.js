@@ -54,7 +54,6 @@ TerminalGroupMovement.prototype.setEvents = function(){
 	this.btn_left_v.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_movement.btn_left_v.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_left_v.eventHelpState())
 			return;
 		game.terminal_group_movement.moveVertical(true);
@@ -68,7 +67,6 @@ TerminalGroupMovement.prototype.setEvents = function(){
 	this.btn_right_v.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_movement.btn_right_v.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_right_v.eventHelpState())
 			return;
 		game.terminal_group_movement.moveVertical(false);
@@ -82,7 +80,6 @@ TerminalGroupMovement.prototype.setEvents = function(){
 	this.btn_left_h.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_movement.btn_left_h.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_left_h.eventHelpState())
 			return;
 		game.terminal_group_movement.moveHorizontal(true);
@@ -96,7 +93,6 @@ TerminalGroupMovement.prototype.setEvents = function(){
 	this.btn_right_h.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_movement.btn_right_h.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_right_h.eventHelpState())
 			return;
 		game.terminal_group_movement.moveHorizontal(false);

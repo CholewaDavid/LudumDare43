@@ -47,7 +47,6 @@ TerminalGroupLight.prototype.setEvents = function(){
 	this.btn_light.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_light.btn_light.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
 		}
@@ -58,7 +57,6 @@ TerminalGroupLight.prototype.setEvents = function(){
 	this.light_light.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_light.light_light.lowerHealth(game.control_use_damage);
 		game.terminal_group_light.light_light.eventHelpState();
 		game.terminal_group_light.checkLights(false);
 	};

@@ -13,12 +13,12 @@ TerminalElement.prototype.eventHelpState = function(){
 		return true;
 	}
 	if(game.terminal_group_reports.active_help && !this.is_lightbulb){
-		game.terminal_group_claw.grab_light.lowerHealth(game.control_use_damage);
+		this.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.writeHelp(this.help_text);
 		return true;
 	}
 	if(game.terminal_group_reports.active_state && !this.is_lightbulb){
-		game.terminal_group_claw.grab_light.lowerHealth(game.control_use_damage);
+		this.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.writeState(this.health);
 		return true;
 	}
