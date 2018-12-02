@@ -58,3 +58,14 @@ ToolLightBulb.prototype.setEvents = function(){
 		game.tool_manager.tool_light_bulb.activate();
 	};
 }
+
+ToolLightBulb.prototype.setLight = function(light){
+	if(light){
+		this.btn_lightbulb.classList.remove("darkness");
+		this.txt_lightbulb_amount.classList.remove("darkness");
+	}
+	else{
+		this.btn_lightbulb.classList.add("darkness");
+		this.txt_lightbulb_amount.classList.add("darkness");
+	}
+}

@@ -20,11 +20,13 @@ TerminalGroupLight.prototype.toggleLight = function(){
 }
 
 TerminalGroupLight.prototype.turnOffLight = function(){
+	this.game.setLight(false);
 	this.light_on = false;
 	this.checkLights(true);
 }
 
 TerminalGroupLight.prototype.turnOnLight = function(){
+	this.game.setLight(true);
 	this.light_on = true;
 	this.checkLights(true);
 }

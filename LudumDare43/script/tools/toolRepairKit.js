@@ -51,3 +51,14 @@ ToolRepairKit.prototype.setEvents = function(){
 		game.tool_manager.tool_repair_kit.activate();
 	};
 }
+
+ToolRepairKit.prototype.setLight = function(light){
+	if(light){
+		this.btn_repair_kit.classList.remove("darkness");
+		this.txt_repair_kit_amount.classList.remove("darkness");
+	}
+	else{
+		this.btn_repair_kit.classList.add("darkness");
+		this.txt_repair_kit_amount.classList.add("darkness");
+	}
+}

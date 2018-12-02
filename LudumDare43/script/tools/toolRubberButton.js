@@ -60,3 +60,14 @@ ToolRubberButton.prototype.setEvents = function(){
 		game.tool_manager.tool_rubber_button.activate();
 	}
 }
+
+ToolRubberButton.prototype.setLight = function(light){
+	if(light){
+		this.btn_rubber_button.classList.remove("darkness");
+		this.txt_rubber_button_amount.classList.remove("darkness");
+	}
+	else{
+		this.btn_rubber_button.classList.add("darkness");
+		this.txt_rubber_button_amount.classList.add("darkness");
+	}
+}

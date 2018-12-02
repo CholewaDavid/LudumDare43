@@ -9,6 +9,10 @@ body{
 	text-align: center;
 }
 
+body.darkness{
+	background-color: #060606;
+}
+
 .terminal_group{
 	border-style: solid;
   border-width: 1px;
@@ -38,12 +42,22 @@ body{
 	height: 30px;
 	text-align: center;
 	box-sizing: content-box;
+	background-color: #C1BBA5
+}
+
+.terminal_button.darkness{
+	background-color: #050404;
+	border-color: #020202;
 }
 
 .terminal_button_light{
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
+}
+
+.terminal_button.darkness{
+	
 }
 
 .unselectable{
@@ -157,8 +171,13 @@ body{
 	margin: 0 10px 0 10px;
 }
 
-.terminal_button{
-	
+.toolbox_text.darkness{
+	color: #000000;
+}
+
+.toolbox_button.darkness{
+	background-color: #020202;
+	border-color: #020202;
 }
 
 .terminal_button.active{
@@ -178,6 +197,11 @@ body{
 	margin-right: 15px;
 }
 
+#toolbox.darkness{
+	background-color: #020100;
+	border-color: #1c0c00;
+}
+
 #content{
 	width: 70%;
 	height: 90%;
@@ -192,12 +216,21 @@ body{
 	height: 45%;
 	resize: none;
 	overflow: hidden;
+	border: 20px solid #323733;
+}
+
+#display_monitor.darkness{
+	border-color: #020202;
 }
 
 #terminal{
 	position:relative;
-	background-color: #AAAAAA;
+	background-color: #E1E2D0;
 	height: 55%;
+}
+
+#terminal.darkness{
+	background-color: #070706;
 }
 
 

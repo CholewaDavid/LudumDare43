@@ -54,3 +54,22 @@ Game.prototype.breakSomething = function(max_amount){
 			this.control_groups[i].breakSomething(Math.floor(Math.random() * max_amount + 1));
 	}
 }
+
+Game.prototype.setLight = function(light){
+	if(this.terminal_group_light.light_on == light)
+		return;
+	for(var i = 0; i < this.control_groups.length; i++){
+		this.control_groups[i].setLight(light);
+	}
+	this.tool_manager.setLight(light);
+	if(light){
+		document.getElementsByTagName("body")[0].classList.remove("darkness");
+		document.getElementById("display_monitor").classList.remove("darkness");
+		document.getElementById("terminal").classList.remove("darkness");
+	}
+	else{
+		document.getElementsByTagName("body")[0].classList.add("darkness");
+		document.getElementById("display_monitor").classList.add("darkness");
+		document.getElementById("terminal").classList.add("darkness");
+	}
+}

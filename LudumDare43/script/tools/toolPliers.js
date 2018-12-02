@@ -54,3 +54,10 @@ ToolPliers.prototype.setEvents = function(){
 		game.tool_manager.tool_pliers.activate();
 	}
 }
+
+ToolPliers.prototype.setLight = function(light){
+	if(light)
+		document.getElementById("toolbox_btn_pliers").classList.remove("darkness");
+	else
+		document.getElementById("toolbox_btn_pliers").classList.add("darkness");
+}

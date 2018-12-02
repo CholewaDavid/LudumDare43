@@ -13,3 +13,12 @@ TerminalGroup.prototype.breakSomething = function(max_amount){
 TerminalGroup.prototype.checkLights = function(){
 	
 }
+
+TerminalGroup.prototype.setLight = function(light){
+	for(var i = 0; i < this.controls.length; i++){
+		if(light)
+			this.controls[i].element.classList.remove("darkness");
+		else
+			this.controls[i].element.classList.add("darkness");
+	}
+}
