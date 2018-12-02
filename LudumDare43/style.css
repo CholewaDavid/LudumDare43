@@ -128,10 +128,54 @@ body{
 	background-color: #111111;
 }
 
+.rubber_button{
+	background-color: #FFC0CB;
+}
+
+.lightbulb{
+	border: none;
+	outline:none;
+}
+
+.lightbulb:active{
+	border: none;
+	outline:none;
+}
+
+.lightbulb:hover{
+	border: none;
+	outline:none;
+}
+
+.lightbulb:focus{
+	border: none;
+	outline:none;
+}
+
+.toolbox_text{
+	color: #FFFFFF;
+	margin: 0 10px 0 10px;
+}
+
+.terminal_button{
+	
+}
+
+.terminal_button.active{
+	background-color: #fcc349;
+}
+
+.terminal_button.inactive{
+	background-color: #f9d78b;
+}
+
 #toolbox{
 	width: 10%;
 	float: right;
 	text-align: right;
+	background-color: #381800;
+	border: solid 10px #934102;
+	margin-right: 15px;
 }
 
 #content{
@@ -140,6 +184,7 @@ body{
 	margin: auto;
 	text-align: left;
 	background-color: #999999;
+	display: inline-block;
 }
 
 #display_monitor{
@@ -153,7 +198,6 @@ body{
 	position:relative;
 	background-color: #AAAAAA;
 	height: 55%;
-	
 }
 
 

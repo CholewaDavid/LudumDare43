@@ -32,6 +32,14 @@ ToolPliers.prototype.use = function(element){
 	if((this.element instanceof TerminalElementButton && element instanceof TerminalElementLight) || (this.element instanceof TerminalElementLight && element instanceof TerminalElementButton))
 		return;
 	
+	if(this.element.is_rubber){
+		game.tool_manager.tool_rubber_button.use(element);
+		this.element.removeRubber();
+	}
+	else if(this.element.is_lightbulb){
+		this.element.removeLightbulb();
+		game.tool_manager.tool_lightbulb.use(element);
+	}
 	element.repairDestroyed();
 	element.health = 0;
 	element.lowerHealth(-this.element.health + 10);

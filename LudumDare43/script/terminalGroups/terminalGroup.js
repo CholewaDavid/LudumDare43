@@ -9,3 +9,7 @@ TerminalGroup.prototype.breakSomething = function(max_amount){
 			this.controls[i].lowerHealth(Math.floor(Math.random() * max_amount));
 	}
 }
+
+TerminalGroup.prototype.checkLights = function(){
+	
+}
