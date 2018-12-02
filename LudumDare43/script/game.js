@@ -1,6 +1,7 @@
 function Game(){
 	this.playing_area = new PlayingArea([5,5]);
 	this.job_manager = new JobManager(this);
+	this.tool_manager = new ToolManager();
 	this.tutorial_on = true;
 	this.game_on = true;
 	this.timeout;

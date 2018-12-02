@@ -5,6 +5,7 @@ function JobManager(game){
 	this.jobs = [];
 	this.total_severity = 0;
 	this.points = 0;
+	this.new_jobs = false;
 }
 
 JobManager.prototype.writeJobs = function(){
@@ -13,6 +14,7 @@ JobManager.prototype.writeJobs = function(){
 	}
 	
 	game.display_monitor.addText("Total severity: " + this.total_severity + "%");
+	this.new_jobs = false;
 }
 
 JobManager.prototype.addJob = function(){
@@ -31,7 +33,8 @@ JobManager.prototype.addJob = function(){
 	if(this.total_severity >= 100)
 		game.endGame();
 	
-	this.game.terminal_group_reports.light_jobs.setColor("green");
+	this.new_jobs = true;
+	this.game.terminal_group_reports.checkLights(true);
 }
 
 JobManager.prototype.checkFinished = function(job_type, data){

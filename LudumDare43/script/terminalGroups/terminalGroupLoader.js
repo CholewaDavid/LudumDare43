@@ -26,7 +26,7 @@ TerminalGroupLoader.prototype.createElement = function(element){
 	new_mixture.elements.push(element);
 	this.playing_area.createMixture(new_mixture);
 	
-	this.game.terminal_group_reports.activateScanLight(true);
+	this.game.terminal_group_reports.checkLights(true);
 }
 
 TerminalGroupLoader.prototype.setEvents = function(){

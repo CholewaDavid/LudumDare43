@@ -25,7 +25,8 @@ TerminalGroupReports.prototype = Object.create(TerminalGroup.prototype);
 
 TerminalGroupReports.prototype.help = function(){
 	if(!this.active_help){
-		this.activateHelp(true);
+		this.active_help = true;
+		this.checkLights(true);
 		return;
 	}
 	this.writeHelp(this.btn_help.help_text);
@@ -33,15 +34,16 @@ TerminalGroupReports.prototype.help = function(){
 
 TerminalGroupReports.prototype.state = function(){
 	if(!this.active_state){
-		this.activateState(true);
+		this.active_state = true
+		this.checkLights(true);
 		return;
 	}
 	this.writeState(this.btn_state.state);
 }
 
 TerminalGroupReports.prototype.jobs = function(){
-	this.light_jobs.setColor("red");
 	this.game.job_manager.writeJobs();
+	this.checkLights(true);
 }
 
 TerminalGroupReports.prototype.scan = function(){
@@ -56,41 +58,56 @@ TerminalGroupReports.prototype.scan = function(){
 
 TerminalGroupReports.prototype.writeHelp = function(text){
 	this.game.display_monitor.addText(text);
-	this.activateHelp(false);
+	this.active_help = false;
+	this.checkLights(true);
 }
 
 TerminalGroupReports.prototype.writeState = function(val){
 	this.game.display_monitor.addText("State: " + val + "%");
-	this.activateState(false);
+	this.active_state = false;
+	this.checkLights(true);
 }
 
-TerminalGroupReports.prototype.activateHelp = function(activate){
-	if(activate){
-		this.active_help = true;
-		this.light_help.setColor("green");
+TerminalGroupReports.prototype.checkLights = function(damage){
+	if(!this.light_help.isDestroyed()){
+		var change = false;
+		if(this.active_help)
+			change = this.light_help.setColor("green");
+		else
+			change = this.light_help.setColor("red");
+		if(damage && change)
+			this.light_help.lowerHealth(this.game.control_use_damage);
 	}
-	else{
-		this.active_help = false;
-		this.light_help.setColor("red");
+	
+	if(!this.light_state.isDestroyed()){
+		var change = false;
+		if(this.active_state)
+			change = this.light_state.setColor("green");
+		else
+			change = this.light_state.setColor("red");
+		if(damage && change)
+			this.light_state.lowerHealth(this.game.control_use_damage);
 	}
-}
-
-TerminalGroupReports.prototype.activateState = function(activate){
-	if(activate){
-		this.active_state = true;
-		this.light_state.setColor("green");
+	
+	if(!this.light_jobs.isDestroyed()){
+		var change = false;
+		if(this.game.job_manager.new_jobs)
+			change = this.light_jobs.setColor("green");
+		else
+			change = this.light_jobs.setColor("red");
+		if(damage && change)
+			this.light_jobs.lowerHealth(this.game.control_use_damage);
 	}
-	else{
-		this.active_state = false;
-		this.light_state.setColor("red");
+	
+	if(!this.light_scan.isDestroyed()){
+		var change = false;
+		if(this.playing_area.getMixture() != null)
+			change = this.light_scan.setColor("green");
+		else
+			change = this.light_scan.setColor("red");
+		if(damage && change)
+			this.light_scan.lowerHealth(this.game.control_use_damage);
 	}
-}
-
-TerminalGroupReports.prototype.activateScanLight = function(activate){
-	if(activate)
-		this.light_scan.setColor("green");
-	else
-		this.light_scan.setColor("red");
 }
 
 TerminalGroupReports.prototype.setEvents = function(){
@@ -147,6 +164,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.light_help.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_help.eventHelpState();
+		game.terminal_group_reports.checkLights(false);
 	};
 	
 	this.light_state.element.onclick = function(){
@@ -154,6 +172,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.light_state.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_state.eventHelpState();
+		game.terminal_group_reports.checkLights(false);
 	};
 	
 	this.light_jobs.element.onclick = function(){
@@ -161,6 +180,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.light_jobs.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_jobs.eventHelpState();
+		game.terminal_group_reports.checkLights(false);
 	};
 	
 	this.light_scan.element.onclick = function(){
@@ -168,5 +188,6 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.light_scan.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_scan.eventHelpState();
+		game.terminal_group_reports.checkLights(false);
 	};
 }

@@ -21,8 +21,8 @@ TerminalGroupClaw.prototype.grab = function(){
 	}
 	
 	this.playing_area.grabMixture();
-	this.grab_light.setColor("green");
-	this.game.terminal_group_reports.activateScanLight(false);
+	this.checkLights(true);
+	this.game.terminal_group_reports.checkLights(true);
 }
 
 TerminalGroupClaw.prototype.drop = function(){
@@ -32,8 +32,20 @@ TerminalGroupClaw.prototype.drop = function(){
 	}
 	
 	this.playing_area.dropMixture();
-	this.grab_light.setColor("red");
-	this.game.terminal_group_reports.activateScanLight(true);
+	this.checkLights(true);
+	this.game.terminal_group_reports.checkLights(true);
+}
+
+TerminalGroupClaw.prototype.checkLights = function(damage){
+	if(this.grab_light.isDestroyed())
+		return;
+	var change = false;
+	if(this.playing_area.claw_held_mixture != null)
+		change = this.grab_light.setColor("green");
+	else
+		change = this.grab_light.setColor("red");
+	if(damage && change)
+		this.grab_light.lowerHealth(this.game.control_use_damage);
 }
 
 TerminalGroupClaw.prototype.setEvents = function(){
@@ -62,7 +74,7 @@ TerminalGroupClaw.prototype.setEvents = function(){
 	this.grab_light.element.onclick = function(){
 		if(!game.game_on)
 			return;
-		game.terminal_group_claw.grab_light.lowerHealth(game.control_use_damage);
 		game.terminal_group_claw.grab_light.eventHelpState();
+		game.terminal_group_claw.checkLights(false);
 	};
 }

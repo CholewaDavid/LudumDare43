@@ -122,9 +122,6 @@ TerminalGroupMovement.prototype.updateDisplays = function(){
 	this.display_h.innerHTML = this.playing_area.claw_position[1] + 1;
 
 	if(this.game.terminal_group_reports != null){
-		if(this.playing_area.getMixture() == null)
-			this.game.terminal_group_reports.activateScanLight(false);
-		else
-			this.game.terminal_group_reports.activateScanLight(true);
+		this.game.terminal_group_reports.checkLights(true);
 	}
 }

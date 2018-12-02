@@ -4,7 +4,8 @@ function TerminalGroupLight(game){
 	this.btn_light = new TerminalElementButton(document.getElementById("terminal_light_btn"), "Toggle light in the room");
 	this.light_light = new TerminalElementLight(document.getElementById("terminal_light_btn_light"), "grey", "Lights up in darkness to make it easier to find the button");
 	
-	this.controls.push(this.btn_light, this.light_light)
+	this.controls.push(this.btn_light, this.light_light);
+	this.light_on = true;
 	
 	this.setEvents();
 }
@@ -12,11 +13,32 @@ function TerminalGroupLight(game){
 TerminalGroupLight.prototype = Object.create(TerminalGroup.prototype);
 
 TerminalGroupLight.prototype.toggleLight = function(){
-	
+	if(this.light_on)
+		this.turnOffLight();
+	else
+		this.turnOnLight();
 }
 
 TerminalGroupLight.prototype.turnOffLight = function(){
-	
+	this.light_on = false;
+	this.checkLights(true);
+}
+
+TerminalGroupLight.prototype.turnOnLight = function(){
+	this.light_on = true;
+	this.checkLights(true);
+}
+
+TerminalGroupLight.prototype.checkLights = function(damage){
+	if(this.light_light.isDestroyed())
+		return;
+	var change = false;
+	if(this.light_on)
+		change = this.light_light.setColor("grey");
+	else
+		change = this.light_light.setColor("yellow");
+	if(damage && change)
+		this.light_light.lowerHealth(this.game.control_use_damage);
 }
 
 TerminalGroupLight.prototype.setEvents = function(){
@@ -36,5 +58,6 @@ TerminalGroupLight.prototype.setEvents = function(){
 			return;
 		game.terminal_group_light.light_light.lowerHealth(game.control_use_damage);
 		game.terminal_group_light.light_light.eventHelpState();
+		game.terminal_group_light.checkLights(false);
 	};
 }

@@ -41,10 +41,10 @@ TerminalGroupOutput.prototype.sendOutput = function(output_enum){
 					return;
 				}
 				this.outputs[0] = true;
-				this.light_output_A.setColor("red");
+				this.checkLights(true);
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.A);}, 7000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_claw.grab_light.setColor("red");
+				this.game.terminal_group_claw.checkLights(true);
 			}
 			break;
 		case this.OutputEnum.B:
@@ -56,10 +56,10 @@ TerminalGroupOutput.prototype.sendOutput = function(output_enum){
 					return;
 				}
 				this.outputs[1] = true;
-				this.light_output_B.setColor("red");
+				this.checkLights(true);
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.B);}, 15000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_claw.grab_light.setColor("red");
+				this.game.terminal_group_claw.checkLights(true);
 			}
 			break;
 		case this.OutputEnum.C:
@@ -71,16 +71,48 @@ TerminalGroupOutput.prototype.sendOutput = function(output_enum){
 					return;
 				}
 				this.outputs[2] = true;
-				this.light_output_C.setColor("red");
+				this.checkLights(true);
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.C);}, 30000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_claw.grab_light.setColor("red");
+				this.game.terminal_group_claw.checkLights(true);
 			}
 			break;
 		case this.OutputEnum.del:
 			this.playing_area.claw_held_mixture = null;
-			this.game.terminal_group_claw.grab_light.setColor("red");
+			this.game.terminal_group_claw.checkLights(true);
 			this.breakSomething(5);
+	}
+}
+
+TerminalGroupOutput.prototype.checkLights = function(damage){
+	if(!this.light_output_A.isDestroyed()){
+		var change = false;
+		if(this.outputs[1])
+			change = this.light_output_A.setColor("red");
+		else
+			change = this.light_output_A.setColor("green");
+		if(change)
+			this.light_output_A.lowerHealth(this.game.control_use_damage);
+	}
+	
+	if(!this.light_output_B.isDestroyed()){
+		var change = false;
+		if(this.outputs[1])
+			change = this.light_output_B.setColor("red");
+		else
+			change = this.light_output_B.setColor("green");
+		if(change)
+			this.light_output_B.lowerHealth(this.game.control_use_damage);
+	}
+	
+	if(!this.light_output_C.isDestroyed()){
+		var change = false;
+		if(this.outputs[1])
+			change = this.light_output_C.setColor("red");
+		else
+			change = this.light_output_C.setColor("green");
+		if(change)
+			this.light_output_C.lowerHealth(this.game.control_use_damage);
 	}
 }
 
@@ -88,15 +120,15 @@ TerminalGroupOutput.prototype.emptyOutput = function(output_enum){
 	switch(output_enum){
 		case this.OutputEnum.A:
 			this.outputs[0] = false;
-			this.light_output_A.setColor("green");
+			this.checkLights(true);
 			break;
 		case this.OutputEnum.B:
 			this.outputs[1] = false;
-			this.light_output_B.setColor("green");
+			this.checkLights(true);
 			break;
 		case this.OutputEnum.C:
 			this.outputs[2] = false;
-			this.light_output_C.setColor("green");
+			this.checkLights(true);
 			break;
 	}
 }
@@ -195,6 +227,7 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.light_output_A.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_A.eventHelpState();
+		game.terminal_group_output.checkLights(false);
 	};
 	
 	this.light_output_B.element.onclick = function(){
@@ -202,6 +235,7 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.light_output_B.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_B.eventHelpState();
+		game.terminal_group_output.checkLights(false);
 	};
 	
 	this.light_output_C.element.onclick = function(){
@@ -209,5 +243,6 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.light_output_C.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_C.eventHelpState();
+		game.terminal_group_output.checkLights(false);
 	};
 }
