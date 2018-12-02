@@ -118,6 +118,8 @@ TerminalGroupOutput.prototype.checkTutorialMixture = function(){
 
 TerminalGroupOutput.prototype.setEvents = function(){
 	this.btn_output_A.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.btn_output_A.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.start){
@@ -137,7 +139,10 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.A);
 	};
+	
 	this.btn_output_B.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.btn_output_B.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.start){
@@ -157,7 +162,10 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.B);
 	};
+	
 	this.btn_output_C.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.btn_output_C.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.mixture){
@@ -169,7 +177,10 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.C);
 	};
+	
 	this.btn_output_delete.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.btn_output_delete.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
@@ -178,15 +189,24 @@ TerminalGroupOutput.prototype.setEvents = function(){
 			return;
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.del);
 	};
+	
 	this.light_output_A.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.light_output_A.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_A.eventHelpState();
 	};
+	
 	this.light_output_B.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.light_output_B.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_B.eventHelpState();
 	};
+	
 	this.light_output_C.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_output.light_output_C.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_C.eventHelpState();
 	};

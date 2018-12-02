@@ -25,6 +25,8 @@ TerminalGroupMixer.prototype.mix = function(amount){
 
 TerminalGroupMixer.prototype.setEvents = function(){
 	this.btn_mix_1.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_mixer.btn_mix_1.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -34,6 +36,8 @@ TerminalGroupMixer.prototype.setEvents = function(){
 		game.terminal_group_mixer.mix(1);
 	};
 	this.btn_mix_2.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_mixer.btn_mix_2.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -43,6 +47,8 @@ TerminalGroupMixer.prototype.setEvents = function(){
 		game.terminal_group_mixer.mix(2);
 	};
 	this.btn_mix_3.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_mixer.btn_mix_3.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			

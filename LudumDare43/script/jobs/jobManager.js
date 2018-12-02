@@ -16,6 +16,8 @@ JobManager.prototype.writeJobs = function(){
 }
 
 JobManager.prototype.addJob = function(){
+	if(!game.game_on)
+			return;
 	var job_variant = Math.floor(Math.random() * 1+1);
 	var severity;
 	switch(job_variant){
@@ -26,6 +28,9 @@ JobManager.prototype.addJob = function(){
 	}
 	
 	this.total_severity += severity;
+	if(this.total_severity >= 100)
+		game.endGame();
+	
 	this.game.terminal_group_reports.light_jobs.setColor("green");
 }
 

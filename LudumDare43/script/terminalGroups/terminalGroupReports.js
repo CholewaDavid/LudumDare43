@@ -95,6 +95,8 @@ TerminalGroupReports.prototype.activateScanLight = function(activate){
 
 TerminalGroupReports.prototype.setEvents = function(){
 	this.btn_help.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.btn_help.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -103,7 +105,10 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.help();
 	};
+	
 	this.btn_state.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.btn_state.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -112,7 +117,10 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.state();
 	};
+	
 	this.btn_jobs.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.btn_jobs.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -121,7 +129,10 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.jobs();
 	}
+	
 	this.btn_scan.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.btn_scan.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -130,19 +141,31 @@ TerminalGroupReports.prototype.setEvents = function(){
 			return;
 		game.terminal_group_reports.scan();
 	}
+	
 	this.light_help.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.light_help.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_help.eventHelpState();
 	};
+	
 	this.light_state.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.light_state.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_state.eventHelpState();
 	};
+	
 	this.light_jobs.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.light_jobs.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_jobs.eventHelpState();
 	};
+	
 	this.light_scan.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_reports.light_scan.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_scan.eventHelpState();
 	};

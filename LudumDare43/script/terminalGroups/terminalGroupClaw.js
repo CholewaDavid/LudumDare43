@@ -38,6 +38,8 @@ TerminalGroupClaw.prototype.drop = function(){
 
 TerminalGroupClaw.prototype.setEvents = function(){
 	this.btn_grab.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_claw.btn_grab.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
@@ -47,6 +49,8 @@ TerminalGroupClaw.prototype.setEvents = function(){
 		game.terminal_group_claw.grab();
 	};
 	this.btn_drop.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_claw.btn_drop.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
@@ -56,6 +60,8 @@ TerminalGroupClaw.prototype.setEvents = function(){
 		game.terminal_group_claw.drop();
 	};
 	this.grab_light.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_claw.grab_light.lowerHealth(game.control_use_damage);
 		game.terminal_group_claw.grab_light.eventHelpState();
 	};

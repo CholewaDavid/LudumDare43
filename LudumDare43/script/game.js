@@ -2,8 +2,9 @@ function Game(){
 	this.playing_area = new PlayingArea([5,5]);
 	this.job_manager = new JobManager(this);
 	this.tutorial_on = true;
+	this.game_on = true;
 	this.timeout;
-	this.new_job_time = 30000;
+	this.new_job_time = 25000;
 	this.control_use_damage = 5;
 	this.control_groups = [];
 }
@@ -32,6 +33,13 @@ Game.prototype.endTutorial = function(){
 
 Game.prototype.startGame = function(){
 	this.gameLoop();
+}
+
+Game.prototype.endGame = function(){
+	clearTimeout(this.timeout);
+	this.game_on = false;
+	this.display_monitor.clear();
+	this.display_monitor.addText("JOB SEVERITY REACHED 100%\n\nINITIATING RAPID DISASSEMBLY\n\n\nJob severity solved: " + this.job_manager.points + "%\n\n\nThank You for Your collaboration.\nTo continue working, please create an alternate reality or turn back time.");
 }
 
 Game.prototype.gameLoop = function(){

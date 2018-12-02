@@ -52,6 +52,8 @@ TerminalGroupMovement.prototype.moveHorizontal = function(left){
 
 TerminalGroupMovement.prototype.setEvents = function(){
 	this.btn_left_v.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_movement.btn_left_v.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_left_v.eventHelpState())
 			return;
@@ -64,6 +66,8 @@ TerminalGroupMovement.prototype.setEvents = function(){
 		}
 	};
 	this.btn_right_v.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_movement.btn_right_v.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_right_v.eventHelpState())
 			return;
@@ -76,6 +80,8 @@ TerminalGroupMovement.prototype.setEvents = function(){
 		}
 	};
 	this.btn_left_h.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_movement.btn_left_h.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_left_h.eventHelpState())
 			return;
@@ -88,6 +94,8 @@ TerminalGroupMovement.prototype.setEvents = function(){
 		}
 	};
 	this.btn_right_h.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_movement.btn_right_h.lowerHealth(game.control_use_damage);
 		if(game.terminal_group_movement.btn_right_h.eventHelpState())
 			return;

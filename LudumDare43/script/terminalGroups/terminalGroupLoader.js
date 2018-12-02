@@ -31,6 +31,8 @@ TerminalGroupLoader.prototype.createElement = function(element){
 
 TerminalGroupLoader.prototype.setEvents = function(){
 	this.btn_element_1.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_loader.btn_element_1.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
@@ -40,6 +42,8 @@ TerminalGroupLoader.prototype.setEvents = function(){
 		game.terminal_group_loader.createElement("H");
 	};
 	this.btn_element_2.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_loader.btn_element_2.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -49,6 +53,8 @@ TerminalGroupLoader.prototype.setEvents = function(){
 		game.terminal_group_loader.createElement("C");
 	};
 	this.btn_element_3.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_loader.btn_element_3.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
@@ -58,6 +64,8 @@ TerminalGroupLoader.prototype.setEvents = function(){
 		game.terminal_group_loader.createElement("O");
 	};
 	this.btn_element_4.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_loader.btn_element_4.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
@@ -67,6 +75,8 @@ TerminalGroupLoader.prototype.setEvents = function(){
 		game.terminal_group_loader.createElement("Xe");
 	};
 	this.btn_element_5.element.onclick = function(){
+		if(!game.game_on)
+			return;
 		game.terminal_group_loader.btn_element_5.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
