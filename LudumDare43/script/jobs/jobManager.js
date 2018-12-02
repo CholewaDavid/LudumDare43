@@ -6,6 +6,7 @@ function JobManager(game){
 	this.total_severity = 0;
 	this.points = 0;
 	this.new_jobs = false;
+	this.timeout = null;;
 }
 
 JobManager.prototype.writeJobs = function(){
@@ -35,6 +36,8 @@ JobManager.prototype.addJob = function(){
 	
 	this.new_jobs = true;
 	this.game.terminal_group_reports.checkLights(true);
+	
+	this.checkRedAlert();
 }
 
 JobManager.prototype.checkFinished = function(job_type, data){
@@ -56,5 +59,29 @@ JobManager.prototype.checkFinished = function(job_type, data){
 		}
 	}
 	
+	this.checkRedAlert();
+	
 	return found;
+}
+
+JobManager.prototype.checkRedAlert = function(){
+	if(this.total_severity >= 70 && this.timeout == null)
+		this.redAlertOn();
+	else if(this.total_severity < 70 && this.timeout != null)
+		this.stopRedAlert();
+}
+
+JobManager.prototype.stopRedAlert = function(){
+	clearTimeout(this.timeout);
+	this.timeout = null;
+}
+
+JobManager.prototype.redAlertOn = function(){
+	document.getElementById("red_alert").style.visibility = "visible";
+	this.timeout = setTimeout(function(){game.job_manager.redAlertOff();}, 1000);
+}
+
+JobManager.prototype.redAlertOff = function(){
+	document.getElementById("red_alert").style.visibility = "hidden";
+	this.timeout = setTimeout(function(){game.job_manager.redAlertOff();}, 3000);
 }

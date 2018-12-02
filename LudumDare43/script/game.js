@@ -5,7 +5,7 @@ function Game(){
 	this.tutorial_on = true;
 	this.game_on = true;
 	this.timeout;
-	this.new_job_time = 25000;
+	this.new_job_time = 1000;
 	this.control_use_damage = 5;
 	this.control_groups = [];
 }
