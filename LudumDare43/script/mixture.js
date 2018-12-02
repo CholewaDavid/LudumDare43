@@ -77,7 +77,7 @@ Mixture.prototype.compare = function(mixture){
 		}
 	}
 	
-	if(found_elements_this.length != found_elements_other)
+	if(found_elements_this.length != found_elements_other.length)
 		return false;
 	
 	for(var i = 0; i < found_elements_this.length; i++){

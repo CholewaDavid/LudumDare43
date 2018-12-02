@@ -13,6 +13,8 @@ function TerminalGroupReports(game){
 	this.light_jobs = new TerminalElementLight(document.getElementById("terminal_report_btn_light_jobs"), "red", "Indicates whether there is new unseen job [green] or not [red].");
 	this.light_scan = new TerminalElementLight(document.getElementById("terminal_report_btn_light_scan"), "red", "Indicates whether there is a mixture on current position [green] or not [red].");
 	
+	this.controls.push(this.btn_help, this.btn_state, this.btn_jobs, this.btn_scan, this.light_help, this.light_state, this.light_jobs, this.light_scan);
+	
 	this.active_help = false;
 	this.active_state = false;
 	
@@ -38,15 +40,14 @@ TerminalGroupReports.prototype.state = function(){
 }
 
 TerminalGroupReports.prototype.jobs = function(){
-	for(var i = 0; i < this.game.jobs.length; i++){
-		this.game.display_monitor.addText(this.game.jobs[i].getString());
-	}
+	this.light_jobs.setColor("red");
+	this.game.job_manager.writeJobs();
 }
 
 TerminalGroupReports.prototype.scan = function(){
 	var mixture = this.playing_area.getMixture();
 	if(mixture == null){
-		this.breakSomething();
+		this.breakSomething(6);
 		return;
 	}
 	
@@ -94,6 +95,7 @@ TerminalGroupReports.prototype.activateScanLight = function(activate){
 
 TerminalGroupReports.prototype.setEvents = function(){
 	this.btn_help.element.onclick = function(){
+		game.terminal_group_reports.btn_help.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
 		}
@@ -102,6 +104,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 		game.terminal_group_reports.help();
 	};
 	this.btn_state.element.onclick = function(){
+		game.terminal_group_reports.btn_state.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
 		}
@@ -110,6 +113,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 		game.terminal_group_reports.state();
 	};
 	this.btn_jobs.element.onclick = function(){
+		game.terminal_group_reports.btn_jobs.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
 		}
@@ -118,6 +122,7 @@ TerminalGroupReports.prototype.setEvents = function(){
 		game.terminal_group_reports.jobs();
 	}
 	this.btn_scan.element.onclick = function(){
+		game.terminal_group_reports.btn_scan.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 		
 		}
@@ -126,15 +131,19 @@ TerminalGroupReports.prototype.setEvents = function(){
 		game.terminal_group_reports.scan();
 	}
 	this.light_help.element.onclick = function(){
+		game.terminal_group_reports.light_help.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_help.eventHelpState();
 	};
 	this.light_state.element.onclick = function(){
+		game.terminal_group_reports.light_state.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_state.eventHelpState();
 	};
 	this.light_jobs.element.onclick = function(){
+		game.terminal_group_reports.light_jobs.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_jobs.eventHelpState();
 	};
 	this.light_scan.element.onclick = function(){
+		game.terminal_group_reports.light_scan.lowerHealth(game.control_use_damage);
 		game.terminal_group_reports.light_scan.eventHelpState();
 	};
 }

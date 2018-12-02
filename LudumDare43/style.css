@@ -60,6 +60,31 @@ body{
 	bottom: 0;
 }
 
+.falling{
+	transform: rotate(75deg);
+	transition: transform 1s linear, bottom: -30;
+}
+
+.destroyed{
+	visibility: hidden;
+}
+
+.damaged_1.terminal_button{
+	transform: rotate(7deg);
+}
+
+.damaged_1.terminal_button_light{
+	
+}
+
+.damaged_2.terminal_button{
+	transform: rotate(15deg) translate(0, 5px);
+}
+
+.damaged_2.terminal_button_light{
+	
+}
+
 #content{
 	width: 70%;
 	height: 90%;

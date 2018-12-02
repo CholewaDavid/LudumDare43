@@ -14,6 +14,8 @@ function TerminalGroupOutput(game){
 	this.light_output_B = new TerminalElementLight(document.getElementById("terminal_output_btn_light_2"), "green", "Indicates, if output 'B' is ready [green] or not [red]");
 	this.light_output_C = new TerminalElementLight(document.getElementById("terminal_output_btn_light_3"), "green", "Indicates, if output 'C' is ready [green] or not [red]");
 	
+	this.controls.push(this.btn_output_A, this.btn_output_B, this.btn_output_C, this.btn_output_delete, this.light_output_A, this.light_output_B, this.light_output_C);
+	
 	this.outputs = new Array(3);
 	for(var i = 0; i < 3; i++)
 		this.outputs[i] = false;
@@ -25,50 +27,60 @@ TerminalGroupOutput.prototype = Object.create(TerminalGroup.prototype);
 
 TerminalGroupOutput.prototype.sendOutput = function(output_enum){
 	if(this.playing_area.claw_held_mixture == null){
-		this.breakSomething();
+		this.breakSomething(4);
 		return;
 	}
 	
 	switch(output_enum){
 		case this.OutputEnum.A:
 			if(this.outputs[0])
-				this.breakSomething;
+				this.breakSomething(5);
 			else{
+				if(!this.game.job_manager.checkFinished(this.game.job_manager.JobTypeEnum.output, "A")){
+					this.breakSomething(10);
+					return;
+				}
 				this.outputs[0] = true;
 				this.light_output_A.setColor("red");
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.A);}, 7000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_reports.activateScanLight(false);
 				this.game.terminal_group_claw.grab_light.setColor("red");
 			}
 			break;
 		case this.OutputEnum.B:
 			if(this.outputs[1])
-				this.breakSomething;
+				this.breakSomething(5);
 			else{
+				if(!this.game.job_manager.checkFinished(this.game.job_manager.JobTypeEnum.output, "B")){
+					this.breakSomething(10);
+					return;
+				}
 				this.outputs[1] = true;
 				this.light_output_B.setColor("red");
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.B);}, 15000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_reports.activateScanLight(false);
 				this.game.terminal_group_claw.grab_light.setColor("red");
 			}
 			break;
 		case this.OutputEnum.C:
 			if(this.outputs[2])
-				this.breakSomething;
+				this.breakSomething(5);
 			else{
+				if(!this.game.job_manager.checkFinished(this.game.job_manager.JobTypeEnum.output, "C")){
+					this.breakSomething(10);
+					return;
+				}
 				this.outputs[2] = true;
 				this.light_output_C.setColor("red");
 				setTimeout(function(){game.terminal_group_output.emptyOutput(game.terminal_group_output.OutputEnum.C);}, 30000);
 				this.playing_area.claw_held_mixture = null;
-				this.game.terminal_group_reports.activateScanLight(false);
 				this.game.terminal_group_claw.grab_light.setColor("red");
 			}
 			break;
 		case this.OutputEnum.del:
 			this.playing_area.claw_held_mixture = null;
-			this.breakSomething();
+			this.game.terminal_group_claw.grab_light.setColor("red");
+			this.breakSomething(5);
 	}
 }
 
@@ -106,6 +118,7 @@ TerminalGroupOutput.prototype.checkTutorialMixture = function(){
 
 TerminalGroupOutput.prototype.setEvents = function(){
 	this.btn_output_A.element.onclick = function(){
+		game.terminal_group_output.btn_output_A.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.start){
 				game.tutorial.continueTutorial(true);
@@ -125,6 +138,7 @@ TerminalGroupOutput.prototype.setEvents = function(){
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.A);
 	};
 	this.btn_output_B.element.onclick = function(){
+		game.terminal_group_output.btn_output_B.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.start){
 				game.tutorial.continueTutorial(false);
@@ -144,6 +158,7 @@ TerminalGroupOutput.prototype.setEvents = function(){
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.B);
 	};
 	this.btn_output_C.element.onclick = function(){
+		game.terminal_group_output.btn_output_C.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			if(game.tutorial.current_tutorial_phase == game.tutorial.TutorialPhaseEnum.mixture){
 				game.terminal_group_output.checkTutorialMixture();
@@ -155,6 +170,7 @@ TerminalGroupOutput.prototype.setEvents = function(){
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.C);
 	};
 	this.btn_output_delete.element.onclick = function(){
+		game.terminal_group_output.btn_output_delete.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
 		}
@@ -163,12 +179,15 @@ TerminalGroupOutput.prototype.setEvents = function(){
 		game.terminal_group_output.sendOutput(game.terminal_group_output.OutputEnum.del);
 	};
 	this.light_output_A.element.onclick = function(){
+		game.terminal_group_output.light_output_A.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_A.eventHelpState();
 	};
 	this.light_output_B.element.onclick = function(){
+		game.terminal_group_output.light_output_B.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_B.eventHelpState();
 	};
 	this.light_output_C.element.onclick = function(){
+		game.terminal_group_output.light_output_C.lowerHealth(game.control_use_damage);
 		game.terminal_group_output.light_output_C.eventHelpState();
 	};
 }

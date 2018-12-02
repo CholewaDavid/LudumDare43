@@ -7,6 +7,8 @@ function TerminalGroupClaw(game){
 	this.btn_drop = new TerminalElementButton(document.getElementById("terminal_claw_btn_drop"), "Drops held mixture on current position. Error when the position is occupied or when the claw doesn't hold a mixture.");
 	this.grab_light = new TerminalElementLight(document.getElementById("terminal_claw_btn_light_detected"), "red", "Signals whether claw holds a mixture [green] or not [red]");
 	
+	this.controls.push(this.btn_grab, this.btn_drop, this.grab_light);
+		
 	this.setEvents();
 }
 
@@ -14,7 +16,7 @@ TerminalGroupClaw.prototype = Object.create(TerminalGroup.prototype);
 
 TerminalGroupClaw.prototype.grab = function(){
 	if(this.playing_area.getMixture() == null || this.playing_area.claw_held_mixture != null){
-		this.breakSomething();
+		this.breakSomething(5);
 		return;
 	}
 	
@@ -25,7 +27,7 @@ TerminalGroupClaw.prototype.grab = function(){
 
 TerminalGroupClaw.prototype.drop = function(){
 	if(this.playing_area.claw_held_mixture == null){
-		this.breakSomething();
+		this.breakSomething(10);
 		return;
 	}
 	
@@ -36,6 +38,7 @@ TerminalGroupClaw.prototype.drop = function(){
 
 TerminalGroupClaw.prototype.setEvents = function(){
 	this.btn_grab.element.onclick = function(){
+		game.terminal_group_claw.btn_grab.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
 		}
@@ -44,6 +47,7 @@ TerminalGroupClaw.prototype.setEvents = function(){
 		game.terminal_group_claw.grab();
 	};
 	this.btn_drop.element.onclick = function(){
+		game.terminal_group_claw.btn_drop.lowerHealth(game.control_use_damage);
 		if(game.tutorial_on){
 			
 		}
@@ -52,6 +56,7 @@ TerminalGroupClaw.prototype.setEvents = function(){
 		game.terminal_group_claw.drop();
 	};
 	this.grab_light.element.onclick = function(){
+		game.terminal_group_claw.grab_light.lowerHealth(game.control_use_damage);
 		game.terminal_group_claw.grab_light.eventHelpState();
 	};
 }
