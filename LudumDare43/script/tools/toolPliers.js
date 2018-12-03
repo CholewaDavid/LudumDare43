@@ -5,6 +5,7 @@ function ToolPliers(){
 	this.element = null;
 	
 	this.setEvents();
+	document.getElementById("toolbox_btn_pliers").classList.add("inactive");
 }
 
 ToolPliers.prototype = Object.create(Tool.prototype);
@@ -13,6 +14,14 @@ ToolPliers.prototype.activate = function(){
 	this.active = !this.active;
 	if(!this.active)
 		this.element = null;
+	if(this.active){
+		document.getElementById("toolbox_btn_pliers").classList.add("active");
+		document.getElementById("toolbox_btn_pliers").classList.remove("inactive");
+	}
+	else{
+		document.getElementById("toolbox_btn_pliers").classList.add("inactive");
+		document.getElementById("toolbox_btn_pliers").classList.remove("active");
+	}
 }
 
 ToolPliers.prototype.use = function(element){
@@ -38,7 +47,7 @@ ToolPliers.prototype.use = function(element){
 	}
 	else if(this.element.is_lightbulb){
 		this.element.removeLightbulb();
-		game.tool_manager.tool_lightbulb.use(element);
+		game.tool_manager.tool_light_bulb.use(element);
 	}
 	element.repairDestroyed();
 	element.health = 0;

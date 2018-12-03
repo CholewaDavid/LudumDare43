@@ -87,7 +87,7 @@ TerminalGroupOutput.prototype.sendOutput = function(output_enum){
 TerminalGroupOutput.prototype.checkLights = function(damage){
 	if(!this.light_output_A.isDestroyed()){
 		var change = false;
-		if(this.outputs[1])
+		if(this.outputs[0])
 			change = this.light_output_A.setColor("red");
 		else
 			change = this.light_output_A.setColor("green");
@@ -107,7 +107,7 @@ TerminalGroupOutput.prototype.checkLights = function(damage){
 	
 	if(!this.light_output_C.isDestroyed()){
 		var change = false;
-		if(this.outputs[1])
+		if(this.outputs[2])
 			change = this.light_output_C.setColor("red");
 		else
 			change = this.light_output_C.setColor("green");

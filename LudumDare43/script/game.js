@@ -5,9 +5,16 @@ function Game(){
 	this.tutorial_on = true;
 	this.game_on = true;
 	this.timeout;
-	this.new_job_time = 25000;
+	this.new_job_time = 20000;
 	this.control_use_damage = 5;
 	this.control_groups = [];
+	
+	this.computer_hum = new Audio("sounds/computer_hum.ogg");
+	this.computer_hum.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+	}, false);
+	this.computer_hum.play();
 }
 
 Game.prototype.loadElements = function(){
@@ -39,6 +46,8 @@ Game.prototype.startGame = function(){
 
 Game.prototype.endGame = function(){
 	clearTimeout(this.timeout);
+	var audio = new Audio("sounds/explosion.wav");
+	audio.play();
 	this.game_on = false;
 	this.display_monitor.clear();
 	this.display_monitor.addText("JOB SEVERITY REACHED 100%\n\nINITIATING RAPID DISASSEMBLY\n\n\nJob severity solved: " + this.job_manager.points + "%\n\n\nThank You for Your collaboration.\nTo continue working, please create an alternate reality or turn back time.");
@@ -46,6 +55,7 @@ Game.prototype.endGame = function(){
 
 Game.prototype.gameLoop = function(){
 	this.job_manager.addJob();
+	this.new_job_time -= 500;
 	this.timeout = setTimeout(function(){game.gameLoop();}, this.new_job_time);
 }
 
@@ -59,6 +69,8 @@ Game.prototype.breakSomething = function(max_amount){
 Game.prototype.setLight = function(light){
 	if(this.terminal_group_light.light_on == light)
 		return;
+	var audio = new Audio("sounds/light_switch.ogg");
+	audio.play();
 	for(var i = 0; i < this.control_groups.length; i++){
 		this.control_groups[i].setLight(light);
 	}

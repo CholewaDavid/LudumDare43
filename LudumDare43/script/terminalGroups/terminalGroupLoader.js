@@ -49,11 +49,13 @@ TerminalGroupLoader.prototype.createElement = function(element){
 	}
 	
 	var new_mixture = new Mixture();
-	if(element == "H2O")
+	if(element == "H2O"){
 		new_mixture.elements.push("H", "H", "O");
+	}
 	else
 		new_mixture.elements.push(element);
 	this.playing_area.createMixture(new_mixture);
+	this.game.job_manager.checkFinished(this.game.job_manager.JobTypeEnum.water, null);
 	
 	this.game.terminal_group_reports.checkLights(true);
 }

@@ -13,9 +13,15 @@ body.darkness{
 	background-color: #060606;
 }
 
+td{
+	text-align: center; 
+  vertical-align: middle;
+}
+
 .terminal_group{
 	border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
+	border-color: #afa685;
 	display:inline-block;
 	padding: 10px;
 	margin: 10px;
@@ -70,8 +76,8 @@ body.darkness{
 }
 
 .absolute_bottom{
-	position: absolute;
-	bottom: 0;
+	/*position: absolute;
+	bottom: 0;*/
 }
 
 .falling{
@@ -171,22 +177,29 @@ body.darkness{
 	margin: 0 10px 0 10px;
 }
 
+.toolbox_button{
+	font-size: 15px;
+	float: left;
+	padding: 5px;
+}
+
 .toolbox_text.darkness{
 	color: #000000;
 }
 
-.toolbox_button.darkness{
+.toolbox_button.active.darkness, .toolbox_button.inactive.darkness{
 	background-color: #020202;
 	border-color: #020202;
 }
 
-.terminal_button.active{
+.toolbox_button.active{
 	background-color: #fcc349;
 }
 
-.terminal_button.inactive{
+.toolbox_button.inactive{
 	background-color: #f9d78b;
 }
+
 
 #toolbox{
 	width: 10%;
@@ -244,6 +257,15 @@ body.darkness{
 	visibility: hidden;
 }
 
+#main_table{
+	width: 100%;
+}
+
+#main_table td{
+	width: 25%;
+}
+
+/*
 #terminal_light{
 	bottom: 0;
 	right: 0;
@@ -255,3 +277,4 @@ body.darkness{
 	top: 0;
 	right: 0;
 }
+*/

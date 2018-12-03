@@ -12,6 +12,7 @@
 		<script src="script/jobs/job.js"></script>
 		<script src="script/jobs/jobManager.js"></script>
 		<script src="script/jobs/jobOutput.js"></script>
+		<script src="script/jobs/jobWater.js"></script>
 		<script src="script/terminalGroups/terminalGroup.js"></script>
 		<script src="script/terminalGroups/terminalGroupClaw.js"></script>
 		<script src="script/terminalGroups/terminalGroupLight.js"></script>
@@ -37,7 +38,7 @@
 		<div id="content">
 			<textarea id="display_monitor" class="display_text" cols="40" rows="20" disabled></textarea>
 			<div id="terminal">
-				<table>
+				<table id="main_table">
 					<tr>
 						<td>
 							<div id="terminal_loader" class="terminal_group">
@@ -155,7 +156,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="terminal_light" class="terminal_group">
+							<div id="terminal_light" class="terminal_group absolute_bottom">
 								<p class="terminal_group_title unselectable">Light</p>
 								<button id="terminal_light_btn" class="terminal_button">Light</button>
 								<button id="terminal_light_btn_light" class="terminal_button_light"></button>

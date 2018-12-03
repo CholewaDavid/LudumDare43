@@ -34,6 +34,7 @@ TerminalGroupClaw.prototype.drop = function(){
 	this.playing_area.dropMixture();
 	this.checkLights(true);
 	this.game.terminal_group_reports.checkLights(true);
+	this.game.job_manager.checkFinished(this.game.job_manager.JobTypeEnum.water, null);
 }
 
 TerminalGroupClaw.prototype.checkLights = function(damage){

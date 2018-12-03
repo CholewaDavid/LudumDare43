@@ -25,7 +25,7 @@ Tutorial.prototype.continueTutorial = function(yes){
 			this.current_tutorial_phase = this.TutorialPhaseEnum.movement;
 			break;
 		case this.TutorialPhaseEnum.movement:
-			this.game.display_monitor.addText("\nWe are running out of time. Don't worry, nothing to worry about. Let's just speed it up a bit...\nYou can put new elements on claw position with a Loader (not if there is already something).\nUse 'Grab' and 'Drop' to move mixtures to other places. You can put them together this way.\nUse mixer to mix elements in mixture to desired value.\nUse 'Scan' if you are not sure, what you did. Light next to 'Scan' tells you that there is a mixture on claw position.\nUse output to send held mixture outside.\nMake H2O, 3x mixed and put it to any output (except for destruction). No rush...");
+			this.game.display_monitor.addText("\nWe are running out of time. Don't worry, nothing to worry about. Let's just speed it up a bit...\nYou can put new elements on claw position with a Loader (not if there is already something).\nUse 'Grab' and 'Drop' to move mixtures to other places. You can put them together this way.\nUse mixer to mix elements in mixture to desired value.\nUse 'Scan' if you are not sure, what you did. Light next to 'Scan' tells you that there is a mixture on claw position.\nUse output to send held mixture outside.\nMake H2O2, 3x mixed and put it to any output (except for destruction). No rush...");
 			this.current_tutorial_phase = this.TutorialPhaseEnum.mixture;
 			break;
 		case this.TutorialPhaseEnum.mixture:

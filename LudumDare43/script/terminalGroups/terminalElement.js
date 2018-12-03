@@ -8,6 +8,9 @@ function TerminalElement(element, help_text){
 }
 
 TerminalElement.prototype.eventHelpState = function(){
+	if(!this.is_lightbulb && !this.isDestroyed())
+		this.playClickSound();
+	
 	if(game.tool_manager.tool_repair_kit.active){
 		game.tool_manager.tool_repair_kit.use(this);
 		return true;
@@ -51,6 +54,8 @@ TerminalElement.prototype.eventHelpState = function(){
 }
 
 TerminalElement.prototype.lowerHealth = function(amount){
+	if(this.isDestroyed() && amount >= 0)
+		return;
 	if(this.is_rubber){
 		if(Math.floor(Math.random() * 10) == 0){
 			this.removeRubber();
@@ -62,8 +67,10 @@ TerminalElement.prototype.lowerHealth = function(amount){
 	this.element.classList.remove("damaged_1");
 	this.element.classList.remove("damaged_2");
 	this.health -= amount;
-	if(this.health <= 0)
+	if(this.health <= 0){
+		this.playDestructionSound();
 		this.destroyElement();
+	}
 	else if(this.health <= 33)
 		this.setDamageClass(2);
 	else if(this.health <= 66)
@@ -71,6 +78,7 @@ TerminalElement.prototype.lowerHealth = function(amount){
 }
 
 TerminalElement.prototype.removeRubber = function(){
+	this.playDestructionSound();
 	this.is_rubber = false;
 	this.element.classList.remove("rubber_button");
 	this.destroyElement();
@@ -112,3 +120,26 @@ TerminalElement.prototype.repairDestroyed = function(){
 }
 
 TerminalElement.prototype.destroyLight = function(){}
+
+TerminalElement.prototype.playClickSound = function(){
+	var audio;
+	if(this.is_rubber)
+		audio = new Audio("sounds/duck.ogg");
+	else
+		audio = new Audio("sounds/click.ogg");
+	audio.play();
+}
+
+TerminalElement.prototype.playDestructionSound = function(){
+	var audio;
+	if(this.is_rubber)
+		audio = new Audio("sounds/plop.wav");
+	else if(this instanceof TerminalElementButton)
+		audio = new Audio("sounds/button_destruction.ogg");
+	else if(this instanceof TerminalElementLight)
+		audio = new Audio("sounds/light_destruction.ogg");
+	else
+		audio = new Audio("sounds/button_destruction.ogg");
+	
+	audio.play();
+}
