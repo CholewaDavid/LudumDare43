@@ -34,7 +34,7 @@ ToolRubberButton.prototype.setActive = function(active){
 		this.btn_rubber_button.classList.remove("inactive");
 	}
 	else{
-		this.btn_rubber_button.classList("inactive");
+		this.btn_rubber_button.classList.add("inactive");
 		this.btn_rubber_button.classList.remove("active");
 	}
 }

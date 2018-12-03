@@ -29,7 +29,7 @@ Tutorial.prototype.continueTutorial = function(yes){
 			this.current_tutorial_phase = this.TutorialPhaseEnum.mixture;
 			break;
 		case this.TutorialPhaseEnum.mixture:
-	this.game.display_monitor.addText("\nThank god. OK, quick info about the hardware: buttons, lights and even the monitor get worn out with repetitive usage.\nUse 'State' to find out how worn out is something. You can use repair kits to fix it, but you will not have enought of those.\nRubber buttons are without text and can fall, light bulbs cannot be clicked. Still, better than nothing.\nOr use pliers to move buttons or lights from place to place. Moved controls will lose some durability doing so, so think before doing.\nChoose, what you need and what you can ignore. Find various ways of doing the same thing.\n\nDON'T LET THE JOB SEVERITY REACH 100%\n\nOK, have to go, bye!");
+	this.game.display_monitor.addText("\nThank god. OK, quick info about the hardware: buttons and lights get worn out with repetitive usage.\nUse 'State' to find out how worn out is something. You can use repair kits to fix it, but you will not have enought of those.\nRubber buttons are without text and can fall, light bulbs cannot be clicked. They are both indestructable.\nOr use pliers to move buttons or lights from place to place. Moved controls will lose some durability doing so, so think before doing.\nChoose, what you need and what you can ignore. Find various ways of doing the same thing.\n\nDON'T LET THE JOB SEVERITY REACH 100%\n\nOK, have to go, bye!");
 			this.game.endTutorial();
 	}
 }

@@ -5,7 +5,7 @@ function Game(){
 	this.tutorial_on = true;
 	this.game_on = true;
 	this.timeout;
-	this.new_job_time = 1000;
+	this.new_job_time = 25000;
 	this.control_use_damage = 5;
 	this.control_groups = [];
 }
@@ -19,8 +19,9 @@ Game.prototype.loadElements = function(){
 	this.terminal_group_loader = new TerminalGroupLoader(this);
 	this.terminal_group_reports = new TerminalGroupReports(this);
 	this.terminal_group_light = new TerminalGroupLight(this);
+	this.terminal_group_display = new TerminalGroupDisplay(this);
 	
-	this.control_groups.push(this.terminal_group_movement, this.terminal_group_output, this.terminal_group_claw, this.terminal_group_mixer, this.terminal_group_loader, this.terminal_group_reports, this.terminal_group_light);
+	this.control_groups.push(this.terminal_group_movement, this.terminal_group_output, this.terminal_group_claw, this.terminal_group_mixer, this.terminal_group_loader, this.terminal_group_reports, this.terminal_group_light, this.terminal_group_display);
 }
 
 Game.prototype.startTutorial = function(){

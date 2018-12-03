@@ -17,6 +17,7 @@
 		<script src="script/terminalGroups/terminalGroupLight.js"></script>
 		<script src="script/terminalGroups/terminalGroupLoader.js"></script>
 		<script src="script/terminalGroups/terminalGroupMixer.js"></script>
+		<script src="script/terminalGroups/terminalGroupDisplay.js"></script>
 		<script src="script/terminalGroups/terminalGroupMovement.js"></script>
 		<script src="script/terminalGroups/terminalGroupOutput.js"></script>
 		<script src="script/terminalGroups/terminalGroupReports.js"></script>
@@ -41,11 +42,22 @@
 						<td>
 							<div id="terminal_loader" class="terminal_group">
 								<p class="terminal_group_title unselectable">Loader</p>
-								<button id="terminal_loader_btn_1" class="terminal_button">H</button>
-								<button id="terminal_loader_btn_2" class="terminal_button">C</button>
-								<button id="terminal_loader_btn_3" class="terminal_button">O</button>
-								<button id="terminal_loader_btn_4" class="terminal_button">Xe</button>
-								<button id="terminal_loader_btn_5" class="terminal_button">U</button>
+								<table>
+									<tr>
+										<td><button id="terminal_loader_btn_1" class="terminal_button">H</button></td>
+										<td><button id="terminal_loader_btn_2" class="terminal_button">C</button></td>
+										<td><button id="terminal_loader_btn_3" class="terminal_button">O</button></td>
+										<td><button id="terminal_loader_btn_4" class="terminal_button">Xe</button></td>
+										<td><button id="terminal_loader_btn_5" class="terminal_button">U</button></td>
+									</tr>
+									<tr>
+										<td><button id="terminal_loader_btn_h2o" class="terminal_button">H2O</button></td>
+										<td><button id="terminal_loader_btn_selector_left" class="terminal_button"><-</button></td>
+										<td><button id="terminal_loader_btn_selector_right" class="terminal_button">-></button></td>
+										<td><span id="terminal_loader_span_selector" class="terminal_display display_text unselectable">H</span></td>
+										<td><button id="terminal_loader_btn_selector_load" class="terminal_button">Load</button></td>
+									</tr>
+								</table>
 							</div>	
 						</td>
 						<td>
@@ -54,6 +66,24 @@
 								<button id="terminal_btn_mix_1" class="terminal_button">1</button>
 								<button id="terminal_btn_mix_2" class="terminal_button">2</button>
 								<button id="terminal_btn_mix_3" class="terminal_button">5</button>
+							</div>
+						</td>
+						<td>
+							<div id="terminal_display_group" class="terminal_group">
+								<p class="terminal_group_title unselectable">Display</p>
+								<table>
+									<tr>
+										<td><button id="terminal_display_group_1" class="terminal_button">Line</button></td>
+										<td><button id="terminal_display_group_2" class="terminal_button">Up</button></td>
+									</tr>	
+									<tr>
+										<td><button id="terminal_display_group_3" class="terminal_button">Clear</button></td>
+										<td><button id="terminal_display_group_4" class="terminal_button">Down</button></td>
+									</tr>
+									<tr>
+										<td><button id="terminal_display_group_5" class="terminal_button">Hello</button></td>
+									</tr>								
+								</table>
 							</div>
 						</td>
 						<td>
