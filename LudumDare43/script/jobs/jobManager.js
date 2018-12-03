@@ -34,7 +34,7 @@ JobManager.prototype.addJob = function(){
 			this.jobs.push(new JobOutput(severity, this.game));
 			break;
 		case 2:
-			severity = 3;
+			severity = 7;
 			this.jobs.push(new JobWater(severity, this.game));
 			break;
 	}
